@@ -1,0 +1,60 @@
+name: 🐛 Bug Report
+description: File a structured bug report to help us identify and fix issues.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thank you for filing a bug report! 
+        Please provide as much clear, structural information as possible to help human developers and AI agents debug the issue efficiently.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Provide a clear and concise description of what the bug is and what you expected to happen.
+      placeholder: Describe the problem...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Provide a minimal, reproducible code example or command sequence.
+      placeholder: |
+        1. Run `uv run python example.py`
+        2. ...
+        3. See error:
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Diagnostic Logs & Tracebacks
+      description: Paste any relevant console output, ruff check output, or traceback logs here.
+      render: shell
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Information
+      description: Provide critical system details.
+      placeholder: |
+        - OS: Windows / macOS / Linux
+        - Python version: 3.13.x
+        - uv version:
+        - ruff version:
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Verification Checklist
+      options:
+        - label: I have verified this issue is reproducible on the latest branch commit.
+          required: true
+        - label: I have searched existing issues to ensure this is not a duplicate.
+          required: true

@@ -1,0 +1,51 @@
+name: 🚀 Feature Request
+description: Propose a new feature, API enhancement, or architectural improvement.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Share your idea!
+        Use this template to suggest changes, new helper functions, or architectural optimizations to the codebase.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a specific limitation or bottleneck? (e.g., "I'm frustrated when...")
+      placeholder: Describe the limitation or challenge...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Provide a clear and detailed description of the feature or API design you would like to see implemented.
+      placeholder: Describe the desired behavior or API interface...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Detail any workarounds or alternative solutions you considered.
+      placeholder: Describe other options...
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Suggested Implementation & Tech Stack
+      description: If you have a specific class design, CLI interface, or uv dependency in mind, outline it here.
+      placeholder: |
+        - Proposed classes / functions:
+        - New dependencies (via `uv add`):
+        - Changes to existing workflows:
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to implement this feature and submit a Pull Request.
