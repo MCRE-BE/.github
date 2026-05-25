@@ -32,11 +32,11 @@ jobs:
           enable-cache: true
           python-version: "3.13"
       - name: Run ruff check
-        run: uv run ruff check --output-format=github .
+        run: uvx ruff check --output-format=github .
       - name: Run ruff format
-        run: uv run ruff format --check .
+        run: uvx ruff format --check .
       - name: Run type checking
-        run: uv run ty check .
+        run: uvx ty check .
 
   test:
     needs: lint
