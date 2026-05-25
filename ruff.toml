@@ -83,6 +83,12 @@ max-complexity = 12
 ignore-variadic-names = true
 
 [lint.extend-per-file-ignores]
+"scripts/*" = [
+    "INP001",  # Scripts are not part of a package
+    "T201",    # Scripts print output to CLI
+    "S603",    # Subprocess calls with untrusted input checks are not relevant for helper scripts
+    "S607",    # Partial path execution is fine for helper scripts
+]
 "**/tests/*" = [
     "D100",
     "D103",

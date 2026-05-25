@@ -5,9 +5,9 @@ tasks in `tasks/todo.md` and that all code quality gates (ruff linting, formatti
 and pytest) are met before the agent concludes its work.
 """
 
-import sys
-import subprocess
 import pathlib
+import subprocess
+import sys
 
 
 def verify_todo() -> None:
@@ -15,7 +15,7 @@ def verify_todo() -> None:
     todo_path = pathlib.Path("tasks/todo.md")
     if not todo_path.exists():
         print(
-            "❌ Verification Error: `tasks/todo.md` not found! Please create a plan before executing."
+            "❌ Verification Error: `tasks/todo.md` not found! Please create a plan before executing.",
         )
         sys.exit(1)
 
@@ -27,9 +27,9 @@ def verify_todo() -> None:
 
     for line_num, line in enumerate(lines, 1):
         stripped = line.strip()
-        if stripped.startswith("- [ ]") or stripped.startswith("* [ ]"):
+        if stripped.startswith(("- [ ]", "* [ ]")):
             pending_tasks.append(f"Line {line_num}: {stripped[5:].strip()}")
-        elif stripped.startswith("- [/]") or stripped.startswith("* [/]"):
+        elif stripped.startswith(("- [/]", "* [/]")):
             in_progress_tasks.append(f"Line {line_num}: {stripped[5:].strip()}")
 
     if pending_tasks or in_progress_tasks:
@@ -53,7 +53,10 @@ def run_command(args: list[str], label: str) -> None:
     try:
         # Run under uv to ensure isolated tool versions are used
         result = subprocess.run(
-            ["uv", "run"] + args, capture_output=True, text=True, check=True
+            ["uv", "run", *args],
+            capture_output=True,
+            text=True,
+            check=True,
         )
         print(f"✅ {label} passed.")
         if result.stdout.strip():
