@@ -10,7 +10,7 @@ Do not trust your own previous output. You must assume the implementation is fla
 ### Verify State:
 
 - Did the code actually change? Run git diff or read the file.
-- Does it strictly adhere to Python 3.13 type annotations (typing.Self, standard collections)?
+- Does it strictly adhere to Python 3.10+ type annotations (typing.Self, standard collections)?
 - Are NumPy docstrings present on all new public methods?
 
 ### Execute Proof:

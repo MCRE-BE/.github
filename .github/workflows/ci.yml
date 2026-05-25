@@ -1,4 +1,4 @@
-name: PR
+name: CI
 
 on:
   push:
@@ -12,6 +12,10 @@ on:
       - main
       - develop
   workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -51,15 +55,10 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras --dev
       - name: Run tests with coverage
-        if: matrix.python-version == '3.13'
         env:
           COVERAGE_FILE: .coverage.${{ matrix.python-version }}
         run: uv run coverage run -m pytest tests/
-      - name: Run tests without coverage
-        if: matrix.python-version != '3.13'
-        run: uv run pytest tests/
       - name: Upload coverage data
-        if: matrix.python-version == '3.13'
         uses: actions/upload-artifact@v7
         with:
           name: coverage-data-${{ matrix.python-version }}

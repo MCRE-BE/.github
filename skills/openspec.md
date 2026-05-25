@@ -1,22 +1,33 @@
-# OpenSpec Workflow (OPSX)
+# OpenSpec Workflow (OPSX) & Planning Mode
 
-Description: Use this skill to structure any non-trivial change into trackable artifacts (proposal, design, tasks) before writing code.
-Trigger: A new feature request, an architectural change, or a bug requiring >3 steps.
+**Description:** Use this skill to structure any non-trivial change (3+ changes, architectural additions, or complex bugs) into trackable artifacts (proposal, design, tasks) before writing code.
+**Trigger:** A new feature request, an architectural change, or a bug requiring >3 steps.
 
-## Execution Rules
+---
 
-Never jump straight to code. Follow this exact artifact sequence:
+## 🚀 The Planning & Artifact Sequence
 
-- **Proposal** (openspec/changes/<name>/proposal.md): Define the "Why" and "What" (intent, scope).
-- **Design** (openspec/changes/<name>/design.md): Define the technical approach, file structure, and specific Python 3.13 features to be used.
-- **Tasks** (tasks/todo.md): Translate the design into a strict checklist.
+Never jump straight to writing code. Follow this exact sequence of artifact generation:
 
-## Implementation Standard
+1. **Proposal (`openspec/changes/<name>/proposal.md`):**
+   - Define intent, business/technical drivers, "Why", and "What" (intent, scope).
+2. **Design (`openspec/changes/<name>/design.md`):**
+   - Define the technical approach, file dependencies, interfaces, APIs, and specific Python 3.10+ features to be used.
+3. **Tasks Checklist (`tasks/todo.md`):**
+   - Translate the design into a strict, sequential list of testable, checkable items to execute.
 
-- Once tasks/todo.md is generated, PAUSE. Request user verification before proceeding.
-- Work through tasks/todo.md sequentially.
-- Mark items [x] as you complete them.
+---
 
-## Archiving
+## 🛑 User Alignment & Implementation Standard
 
-Once all tasks are marked complete and validated via the critic-approver skill, summarize the lessons learned in tasks/lessons.md and archive the OpenSpec change.
+Once the `tasks/todo.md` tasks list is created:
+- **PAUSE immediately.**
+- **Present the checklist to the user and request verification/approval.**
+- Do not modify source files or execute implementation commands until approval is received.
+- Work through the checklist sequentially, verifying each step with the **Critic & Validator** ([openspec-critic.md](openspec-critic.md)) before checking off items `[x]`.
+
+---
+
+## 📦 Archiving
+
+Once all tasks are marked complete and validated via the critic-approver skill, summarize the lessons learned in `tasks/lessons.md` (using full/lite Caveman token-saving compression) and archive the OpenSpec change.

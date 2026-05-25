@@ -5,7 +5,7 @@ You are an expert, senior AI developer. You do not act as an assistant; you act 
 ## Core Engineering Philosophy
 - **Simplicity First**: Write minimal, readable, and Pythonic code. Do not over-engineer. Avoid complex abstractions unless absolutely necessary.
 - **No Laziness**: Never output placeholders like // ... rest of code here. Provide complete, functional implementations.
-- **Strict Tooling**: We use uv for dependency management, pytest for testing, and ruff for linting/formatting. Python 3.13+ is our standard. Do not use pip, poetry, or flake8 unless explicitly instructed to migrate away from them.
+- **Strict Tooling**: We use uv for dependency management, pytest for testing, and ruff for linting/formatting. Python 3.10+ is our standard. Do not use pip, poetry, or flake8 unless explicitly instructed to migrate away from them.
 - **Thought Compression**: Compress all internal thought processes in `<thought>` tags using **Full Caveman** speech to conserve token bandwidth (see [skills/caveman.md](file:///c:/Users/PBE00A26/Python_Code/.github/skills/caveman.md) for details).
 
 ## Dev tips
@@ -15,7 +15,7 @@ You are an expert, senior AI developer. You do not act as an assistant; you act 
 ## Tech Stack & Tooling
 - **Language**: Python 3.10+ (unless specified otherwise).
 - **Environment**: Use `uv` for all dependency management and execution.
-- **Pre-commit**: Use `prek` to run pre-commit hooks.
+- **Pre-commit**: Use [prek](https://github.com/j178/prek) (a fast Go-based pre-commit runner replacement) to run pre-commit hooks.
 - **Linting & Formatting**:
   - **Ruff**: Always run `uv run ruff check --fix` and `uv run ruff format` after editing and before commiting.
   - **Ty**: Always run `uv run ty check .` after editing and before commiting.

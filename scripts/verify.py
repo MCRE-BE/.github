@@ -84,7 +84,10 @@ def main() -> None:
     # 3. Verify Ruff Formatting
     run_command(["ruff", "format", "--check", "."], "Ruff Formatter")
 
-    # 4. Verify Pytest Suite (if tests directory exists)
+    # 4. Verify Type Checking
+    run_command(["ty", "check", "."], "Ty Type Checker")
+
+    # 5. Verify Pytest Suite (if tests directory exists)
     if pathlib.Path("tests").is_dir():
         run_command(["pytest", "-v"], "Pytest Suite")
     else:

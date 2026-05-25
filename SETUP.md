@@ -31,7 +31,6 @@ Open or create the `.gitmodules` file at the root of your consumer repository an
 
 *Rationale:* This prevents local edits or uncommitted logs inside `.agents/global/` from showing up as modified files in the consumer repo's git history, ensuring smooth commits and preventing AI agent retry loops.
 
-
 ---
 
 ## 3. Standardizing Ruff Linting & Formatting
@@ -61,7 +60,7 @@ extend = ".agents/global/ruff.toml"
 
 ## 4. Bootstrapping IDE AI Agents (Symlinking)
 
-Editor-native AI tools (like Cursor, Windsurf, or Clinch) scan the workspace root for custom rules. To feed the centralized instructions directly to the IDE's built-in agents without duplicating code:
+Editor-native AI tools (like Cursor, Windsurf, or Cline) scan the workspace root for custom rules. To feed the centralized instructions directly to the IDE's built-in agents without duplicating code:
 
 Create a bootstrap script (e.g., `bootstrap.sh` or `bootstrap.bat`) at the root of the repository, or run the following symlink commands manually:
 
@@ -69,14 +68,16 @@ Create a bootstrap script (e.g., `bootstrap.sh` or `bootstrap.bat`) at the root 
 ```bash
 ln -sf .agents/global/AGENTS.md .cursorrules
 ln -sf .agents/global/AGENTS.md .windsurfrules
+ln -sf .agents/global/GEMINI.md GEMINI.md
 ln -sf .agents/global/PULL_REQUEST_TEMPLATE.md .github/PULL_REQUEST_TEMPLATE.md
 ```
 
 ### Windows (PowerShell - run as Administrator)
 ```powershell
-New-Item -ItemType SymbolLink -Path ".cursorrules" -Target ".agents/global/AGENTS.md" -Force
-New-Item -ItemType SymbolLink -Path ".windsurfrules" -Target ".agents/global/AGENTS.md" -Force
-New-Item -ItemType SymbolLink -Path ".github/PULL_REQUEST_TEMPLATE.md" -Target ".agents/global/PULL_REQUEST_TEMPLATE.md" -Force
+New-Item -ItemType SymbolicLink -Path ".cursorrules" -Target ".agents/global/AGENTS.md" -Force
+New-Item -ItemType SymbolicLink -Path ".windsurfrules" -Target ".agents/global/AGENTS.md" -Force
+New-Item -ItemType SymbolicLink -Path "GEMINI.md" -Target ".agents/global/GEMINI.md" -Force
+New-Item -ItemType SymbolicLink -Path ".github/PULL_REQUEST_TEMPLATE.md" -Target ".agents/global/PULL_REQUEST_TEMPLATE.md" -Force
 ```
 
 ---
@@ -97,7 +98,19 @@ This script programmatically validates:
 1. **Task Completeness:** Parses `tasks/todo.md` to ensure zero pending `[ ]` or in-progress `[/]` tasks remain.
 2. **Linting Gates:** Ensures `uv run ruff check .` passes without errors.
 3. **Formatting Gates:** Ensures `uv run ruff format --check .` is clean.
-4. **Test Gates:** Runs `uv run pytest -v` (if a `tests/` directory exists).
+4. **Type Gates:** Ensures `uv run ty check .` runs without errors.
+5. **Test Gates:** Runs `uv run pytest -v` (if a `tests/` directory exists).
 
-If any check fails, the script returns a non-zero exit code, raising an immediate error in the agent's workflow and forcing it to self-correct before presenting the code to the user or making a commit.
+---
 
+## 6. Recommended Workspace `.gitignore`
+
+To prevent AI-generated planning directories, todo lists, and temporary scratchpad scripts from polluting your codebase, add the following to your root `.gitignore`:
+
+```text
+# AI Agent Workspaces & Planning Artifacts
+tasks/
+openspec/
+scratch/
+.agents/
+```

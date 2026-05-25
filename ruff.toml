@@ -13,8 +13,11 @@ exclude = [
 line-length = 120
 indent-width = 4
 extend-exclude = ["notebooks"]
+target-version = "py310"
 
 [format]
+# WARNING: Preview formatting rules are unstable and may change between ruff versions.
+# Consumer repos should pin the same ruff version to avoid cross-version format drift.
 preview = true
 
 [lint]
@@ -40,7 +43,6 @@ ignore = [
       "BLE001", # blind-except
 
 
-      "E501", #  Line too long (82 > 79 characters) (E501)
       "E701", #  multiple statements on one line (colon)
       "EM101", #  empty except clause
 
@@ -50,8 +52,6 @@ ignore = [
       "D211", #  No blank lines allowed before class docstring
       "D401", #  First line should be in imperative mood; try rephrasing
 
-      "E203", #  Whitespace before ":"
-      "E266", #  Too many leading "#" for block comment (E266)
       "E402", #  module level import not at top of file
 
       "LOG015",  # Checks for usages of the following logging top-level functions: debug, info, warn, warning, error, critical, log, exception.
@@ -65,7 +65,7 @@ ignore = [
 
       "TRY002", # raise-vanilla-class
       "TRY003", # unnecessary-except-type
-      "TC004",  # runtime-import-in-type-checking-block
+      "TC004",  # runtime-import-in-type-checking-block (renamed from TCH004 in ruff 0.5+)
 ]
 
 [lint.pydocstyle]

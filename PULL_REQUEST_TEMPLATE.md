@@ -26,7 +26,7 @@ List the key changes introduced in this PR:
   ```
 
 ### 2. Code Quality & Standards
-- [ ] **Formatting:** Trailing commas are used on all multi-line lists/parameters.
+- [ ] **Formatting:** Trailing commas are used on all multi-line lists/parameters (see [AGENTS.md](.agents/global/AGENTS.md) for full context).
 - [ ] **Linting & Types:** `uv run ruff check .` and `uv run ty check .` run without errors.
 - [ ] **Documentation:** NumPy docstring style is used for all public classes and functions.
 - [ ] **Explicit Arguments:** Named arguments are preferred over positional arguments for clarity and safety.
@@ -37,5 +37,5 @@ List the key changes introduced in this PR:
 - [ ] Combined code coverage reaches **100%** in the local test suite.
 
 ### 4. Git Workflow
-- [ ] The commit message follows **Conventional Commits** format (`type(scope): description`).
+- [ ] The commit message follows [Conventional Commits](https://conventionalcommits.org) format (`type(scope): description`).
 - [ ] Changes are confined to a single logical improvement (no unrelated side effects).

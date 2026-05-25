@@ -1,7 +1,7 @@
-- name: feature
+- name: enhancement
   description: Addition of a new feature to the code base
   color: 0e8a16
-- name: bug/fix
+- name: bug
   description: Something isn't working
   color: b60205
 - name: documentation
@@ -33,7 +33,7 @@
   color: d93f0b
 - name: dependencies
   description: Update dependencies.
-  color: d93f0b
+  color: 0366d6
 - name: github_actions
   description: Dependabot updates for github actions
-  color: d93f0b
+  color: 7f52ff
