@@ -15,8 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: micnncim/action-label-syncer@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
         with:
           manifest: .github/labels.yml
+          repository: |
+            MCRE-BE/pyRobocopy
+            MCRE-BE/py-file-attributes
+            MCRE-BE/ntfy_lite
+            MCRE-BE/PyParquetViewer
+          token: ${{ secrets.PERSONAL_TOKEN }}
