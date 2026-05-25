@@ -44,17 +44,41 @@ Depending on the token constraints, you can toggle between three compression tie
 
 ---
 
-## 4. Operational Boundaries (Auto-Clarity)
+## 4. `/caveman-commit` (Commit Message Compression)
 
-To prevent operational hazards, automatically suspend Caveman Mode and revert to standard, detailed English in the following situations:
+All commit messages must follow **Conventional Commit** conventions coupled with **Caveman Lite** speech in the description.
 
-1. **Security / Safety warnings:** If executing a high-risk operation, dangerous shell command, or encountering security vulnerabilities.
-2. **User Confusion:** If the developer explicitly asks for a detailed explanation or seems confused by the compressed syntax.
-3. **Commit & PR Assets:** Commit messages, PR descriptions, and code documentation (`docstrings`) must **always** be written in standard, professional English.
+* **Formatting Rule:** `<type>[optional scope]: <caveman-lite-description>`
+* **Constraints:** Keep subject line $\le 50$ chars. Focus on *why* over *what*. Strip articles and filler words.
+* **Examples:**
+  * `feat(auth): add timeout guard prevent server hang`
+  * `fix(db): fix checkout race pool exhaust`
 
 ---
 
-## 5. Session Commands
+## 5. Thought Compression (Internal Reasoning)
+
+To drastically cut output tokens, compress internal thought processes in `<thought>` tags using **Full Caveman** speech.
+
+* **Formatting Rule:** Drop articles, pronouns, pleasantries, filler words. Use telegraphic, keyword-only style.
+* **Examples:**
+  * `<thought>Read config file. Inspect setup. Edit add new parameter.</thought>`
+  * `<thought>Test fail. Expect 200, got 404. Check API route definition.</thought>`
+
+---
+
+## 6. `/caveman-compress` (Memory & Lessons Compression)
+
+All memory, lessons, and learnings files (like `tasks/lessons.md` or `learnings.md`) must be created/updated with key changes written in **Full/Lite Caveman** speech.
+
+* **Formatting Rule:** Keep entries telegraphic. Preserve technical terms, paths, filenames, and code verbatim. Cut all auxiliary framing.
+* **Examples:**
+  * `* Missing trailing comma on multi-line calls fail Ruff. Always add trailing comma.`
+  * `* Avoid slash issue on Windows. Use pathlib.Path exclusively.`
+
+---
+
+## 7. Session Commands
 
 * **Activate Caveman:** `talk like caveman` or `/caveman`
 * **Deactivate Caveman:** `stop caveman` or `normal mode`

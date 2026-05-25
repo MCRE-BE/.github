@@ -23,7 +23,7 @@
   - **Paths**: Use `pathlib.Path` exclusively.
 
 - **Git Workflow**:
-  - Use **Conventional Commits** (`feat:`, `fix:`, `docs:`, etc.).
+  - Use **Conventional Commits** (`feat:`, `fix:`, `docs:`, etc.) coupled with **Caveman Lite** speech in the description (formatted as `<type>[optional scope]: <caveman-lite-description>`). See [skills/caveman.md](file:///c:/Users/PBE00A26/Python_Code/.github/skills/caveman.md) for rules and examples.
   - **Branching**: Never commit directly to `master` or `main`. Use feature branches and merge-based workflows.
 
 ---
@@ -53,11 +53,11 @@
 
 ## Workflow Orchestration
 
-### 1. Plan Mode Default
+### 1. Plan Mode Default & OpenSpec Workflow (OPSX)
 - Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions).
+- Strict execution sequence: Proposal (`openspec/changes/<name>/proposal.md`) -> Design (`openspec/changes/<name>/design.md`) -> Tasks checklist (`tasks/todo.md`) according to [OpenSpec Workflow (openspec.md)](file:///c:/Users/PBE00A26/Python_Code/.github/skills/openspec.md).
+- **PAUSE immediately and request user verification** before executing tasks in `tasks/todo.md`.
 - If something goes sideways, STOP and re-plan immediately.
-- Use plan mode for verification steps, not just building.
-- Write detailed specs upfront to reduce ambiguity.
 
 ### 2. Subagent Strategy
 - Use subagents liberally to keep main context window clean.
@@ -71,7 +71,8 @@
 - Ruthlessly iterate on these lessons until mistake rate drops.
 - Review lessons at session start for relevant project.
 
-### 4. Verification Before Done
+### 4. Verification Before Done (Critic & Validator)
+- For every task item completed, run the strict **Critic & Validator** proof loop: check git diff, ensure Python 3.13 types, enforce NumPy docstrings, run `ruff`, run `pytest` (see [Critic & Validator (openspec-critic.md)](file:///c:/Users/PBE00A26/Python_Code/.github/skills/openspec-critic.md)).
 - Never mark a task complete without proving it works.
 - Diff behavior between main and your changes when relevant.
 - Ask yourself: "Would a staff engineer approve this?"
@@ -89,13 +90,16 @@
 - Zero context switching required from the user.
 - Go fix failing CI tests without being told how.
 
+### 7. Thought Compression
+- Compress all internal thought processes in `<thought>` tags using **Full Caveman** speech to conserve token bandwidth (see [skills/caveman.md](file:///c:/Users/PBE00A26/Python_Code/.github/skills/caveman.md) for rules and examples).
+
 ## Task Management
-1. **Plan First**: Write plan to `tasks/todo.md` with checkable items.
-2. **Verify Plan**: Check in before starting implementation.
-3. **Track Progress**: Mark items complete as you go.
-4. **Explain Changes**: High-level summary at each step.
-5. **Document Results**: Add review section to `tasks/todo.md`.
-6. **Capture Lessons**: Update `tasks/lessons.md` after corrections.
+1. Plan First: Write plan to `tasks/todo.md` with checkable items.
+2. Verify Plan: Check in before starting implementation.
+3. Track Progress: Mark items complete as you go.
+4. Explain Changes: High-level summary at each step.
+5. Document Results: Add review section to `tasks/todo.md`.
+6. Capture Lessons: Update `tasks/lessons.md` after corrections. All lessons/memory updates MUST be compressed in **Full/Lite Caveman** speech following `/caveman-compress` guidelines (see [skills/caveman.md](file:///c:/Users/PBE00A26/Python_Code/.github/skills/caveman.md)).
 
 ## Core Principles
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
